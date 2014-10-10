@@ -1384,10 +1384,10 @@ describe("eslint", function() {
             eslint.reset();
             eslint.on("Program", function() {
                 var scope = eslint.getScope(),
-                    exports = getVariable(scope, "exports"),
+                    exported = getVariable(scope, "exports"),
                     window = getVariable(scope, "window");
 
-                assert.equal(exports.writeable, true);
+                assert.equal(exported.writeable, true);
                 assert.equal(window.writeable, false);
             });
             eslint.verify(code, config, filename, true);
@@ -1403,10 +1403,10 @@ describe("eslint", function() {
             eslint.reset();
             eslint.on("Program", function() {
                 var scope = eslint.getScope(),
-                    exports = getVariable(scope, "exports"),
+                    exported = getVariable(scope, "exports"),
                     window = getVariable(scope, "window");
 
-                assert.equal(exports.writeable, true);
+                assert.equal(exported.writeable, true);
                 assert.equal(window, null);
             });
             eslint.verify(code, config, filename, true);
